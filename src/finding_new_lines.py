@@ -8,6 +8,20 @@ from src.utils import get_distance_stops
 
 
 def computing_potential_connections(G):
+    '''
+    Finding potential new connections to make in a graph
+
+    Parameters
+    ----------
+    G : Graph
+        Graph where the new connections should be made.
+
+    Returns
+    -------
+    subset_list_potential_connections : list
+        list of the potential connections to create.
+
+    '''
     list_nodes = list(G.nodes())
     list_potential_connections = list(combinations(list_nodes, 2))
     # yields the elements in list_potential_connections that are NOT in G.edges
@@ -62,6 +76,30 @@ def computing_potential_connections(G):
 
 def getting_cheapest_k_connections(list_potential_connections, k,
                                    dict_distances, dict_costs):
+    '''
+    Computing the cheapest k connections from a list of potential
+    connections.
+
+    Parameters
+    ----------
+    list_potential_connections : list
+        list of potential connections to create.
+    k : int
+        number of connections to keep for each transportation mode.
+    dict_distances : dictionary
+        dictionary where the key is a stop and the value is a dictionary
+        containing the distances between that stop and all other stops.
+    dict_costs : dictionary
+        dictionary where the key is a transportation mode and the value
+        is the cost in euros of 1 kilometer of railroad.
+
+    Returns
+    -------
+    top_K_connections : dictionary
+        dictionary where the key is a transportation mode and the value
+        is the list of K cheapest connections to build.
+
+    '''
     # only keeping the cheapest K connections for each mode
     # and that are far from each other (more than 5km)
     top_K_connections = {}
@@ -93,6 +131,34 @@ def getting_cheapest_k_connections(list_potential_connections, k,
 
 def create_intersection_stops(stop_1, stop_2, G,
                               dict_distances, dict_geo_data):
+    '''
+    Detecting intersections between a new connection and existing connections.
+    For each intersection, the closest existing stop is computed.
+
+    Parameters
+    ----------
+    stop_1 : string
+        name of a stop to be connected.
+    stop_2 : string
+        name of the other stop to be connected.
+    G : Graph
+        graph where intersections between connections need to be detected.
+    dict_distances : dictionary
+        dictionary where the key is a stop and the value is a dictionary
+        containing the distances between that stop and all other stops.
+    dict_geo_data : dictionary
+        dictionary where the key is a stop and the value is a dictionary
+        containing its location data.
+
+    Returns
+    -------
+    list
+        list of the stops where the new connection will intersect.
+    dict_existing_connections : dictionary
+        dictionary where the key is a stop and the value is a list of all
+        the stop it connecs to through a walking edge.
+
+    '''
     # list that will contain the list of stops intersecting with the edge
     # between stop_1 and stop_2
     list_intersections = []
