@@ -14,7 +14,11 @@ import src.finding_new_lines as finding_new_lines
 import sys
 
 if __name__ == '__main__':
+    # number of connections to test for each mode
+    # the connections that will be tested are the cheapest ones
+    # among those that are more than 5km long
     k = sys.argv[1][1:]
+    # number of improvements to be suggested for each mode
     n = sys.argv[2][1:]
 
     # loading and cleaning the data
@@ -54,13 +58,6 @@ if __name__ == '__main__':
     dict_costs['tram'] = 22*1000000
     dict_costs['metro'] = 80*1000000
     dict_costs['RER'] = 120*1000000
-
-    # number of connections to test for each mode
-    # the connections that will be tested are the cheapest ones
-    # among those that are more than 5km long
-    k = 100
-    # number of improvements to be suggested for each mode
-    n = 3
 
     improvements = finding_new_lines.computing(G, dict_costs, n, k,
                                                dict_distances, dict_geo_data,
