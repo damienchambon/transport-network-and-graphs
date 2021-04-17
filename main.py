@@ -17,9 +17,9 @@ if __name__ == '__main__':
     # number of connections to test for each mode
     # the connections that will be tested are the cheapest ones
     # among those that are more than 5km long
-    k = sys.argv[1][1:]
+    k = int(sys.argv[1][1:])
     # number of improvements to be suggested for each mode
-    n = sys.argv[2][1:]
+    n = int(sys.argv[2][1:])
 
     # loading and cleaning the data
     dict_df = data_loading_cleaning.loading_data('data/raw/')
