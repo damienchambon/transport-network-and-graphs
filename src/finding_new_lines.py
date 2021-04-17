@@ -262,7 +262,7 @@ def finding_lines(G, dict_costs, n, top_K_connections,
         for i in range(len(connections_to_study)):
             if i % 50 == 0 or (i == len(connections_to_study)-1):
                 print('{}/{}'.format(i+1, len(connections_to_study)))
-            if (i != 0 and i % 100 == 0) or (i == len(connections_to_study)-1):
+            if (i != 0 and i % 300 == 0) or (i == len(connections_to_study)-1):
                 print()
                 print('Current best ' + str(n) + ' connections to build are:')
                 if len(list_improvements[mode]) != 0:
