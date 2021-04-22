@@ -5,13 +5,13 @@
 This repository contains the code and the figures used for the study _Optimizing new connections in a transportation system: a case study of the Parisian public transit_. The goal of the study was to create an algorithm that finds the best lines to create in a public transportation network in order to optimize its efficiency.
 
 ## Data
-The data comes from an open data repository from the RATP, the company that manages the public transportation in Paris. The data can be downloaded [here](https://data.ratp.fr/explore/dataset/offre-transport-de-la-ratp-format-gtfs/information/) by clicking on _RATP_GTFS_FULL_.
+The data comes from an open data repository from the RATP, the company that manages the public transportation in Paris. The data can be downloaded [here](https://data.ratp.fr/explore/dataset/offre-transport-de-la-ratp-format-gtfs/information/) by clicking on _RATP_GTFS_FULL_. Once it has been downloaded, the data should be extracted and put in `data/raw` while `data/filtered` remains empty.
 
 ## Structure of the repo
 The repository is structured as follows:
 
 - `docs`: documentation of the data (in French)
-- `data`: the data downloaded from the RATP website should be extracted and put in `data/raw` while `data/filtered` remains empty
+- `data`: the original data is in `data/raw` while `data/filtered` contains the data after it has been filtered and cleaned
 - `objects`: serialized objects are saved there and loaded from there during the analysis
 - `figures`: figures that are created during the analysis
 - `src`: code required for the analysis
